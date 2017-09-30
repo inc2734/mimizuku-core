@@ -18,7 +18,7 @@ class Core {
 		 * @param array $config
 		 * @return array
 		 */
-		add_filter( 'inc2734_view_controller_config', function( $config ) {
+		add_filter( 'inc2734_view_controller_config', function() {
 			return [
 				'templates' => [
 					'vendor/inc2734/mimizuku-core/src/view',
