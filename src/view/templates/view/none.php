@@ -6,5 +6,5 @@
  */
 ?>
 <p>
-	<?php esc_html_e( 'No posts.', 'mimizuku' ); ?>
+	<?php esc_html_e( 'No posts.', 'inc2734-mimizuku-core' ); ?>
 </p>
