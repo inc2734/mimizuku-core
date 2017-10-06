@@ -6,9 +6,9 @@
  */
 ?>
 <p>
-	<?php esc_html_e( 'Woops! Page not found.', 'mimizuku' ); ?><br>
-	<?php esc_html_e( 'The page you are looking for may be moved or deleted.', 'mimizuku' ); ?><br>
-	<?php esc_html_e( 'Please search this search box.', 'mimizuku' ); ?>
+	<?php esc_html_e( 'Woops! Page not found.', 'inc2734-mimizuku-core' ); ?><br>
+	<?php esc_html_e( 'The page you are looking for may be moved or deleted.', 'inc2734-mimizuku-core' ); ?><br>
+	<?php esc_html_e( 'Please search this search box.', 'inc2734-mimizuku-core' ); ?>
 </p>
 
 <?php get_search_form(); ?>
