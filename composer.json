@@ -2,7 +2,7 @@
   "name": "inc2734/mimizuku-core",
   "description": "This library is core of WordPress theme mimizuku",
   "license": "GPL-2.0+",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "require": {
     "php": ">=5.6",
     "inc2734/wp-breadcrumbs": ">=0.3.2",
@@ -15,9 +15,9 @@
     "inc2734/wp-seo": ">=0.6.0",
     "inc2734/wp-like-me-box": ">=0.1.2",
     "inc2734/wp-pure-css-gallery": ">=0.1.4",
-    "inc2734/wp-awesome-widgets": ">=1.2.0",
+    "inc2734/wp-awesome-widgets": ">=1.2.1",
     "inc2734/wp-awesome-components": ">=0.4.2",
-    "inc2734/wp-contents-outline": ">=0.2.1",
+    "inc2734/wp-contents-outline": ">=0.2.3",
     "inc2734/wp-profile-box": ">=0.1.1"
   },
   "require-dev": {
