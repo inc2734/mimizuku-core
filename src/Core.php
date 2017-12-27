@@ -47,7 +47,8 @@ class Core {
 					'vendor/inc2734/mimizuku-core/src/view/templates/view',
 				],
 				'static' => [
-					'vendor/inc2734/mimizuku-core/src/view/templates/view/static',
+					'templates/static',
+					'vendor/inc2734/mimizuku-core/src/view/templates/static',
 				],
 			];
 		} );
