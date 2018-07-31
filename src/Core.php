@@ -125,7 +125,7 @@ class Core {
 		$files = static::_get_include_files( $directory, $exclude_underscore );
 
 		foreach ( $files['files'] as $file ) {
-			$template_name = str_replace( [ trailingslashit( get_template_directory() ), '.php' ], '', $file );
+			$template_name = str_replace( [ trailingslashit( realpath( get_template_directory() ) ), '.php' ], '', $file );
 			get_template_part( $template_name );
 		}
 
