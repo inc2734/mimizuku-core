@@ -15,12 +15,18 @@ class Mimizuku_Controller extends View_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		add_filter( 'inc2734_wp_view_controller_layout', function( $layout ) {
-			return apply_filters( 'mimizuku_layout', $layout );
-		} );
+		add_filter(
+			'inc2734_wp_view_controller_layout',
+			function( $layout ) {
+				return apply_filters( 'mimizuku_layout', $layout );
+			}
+		);
 
-		add_filter( 'inc2734_wp_view_controller_view', function( $view ) {
-			return apply_filters( 'mimizuku_view', $view );
-		} );
+		add_filter(
+			'inc2734_wp_view_controller_view',
+			function( $view ) {
+				return apply_filters( 'mimizuku_view', $view );
+			}
+		);
 	}
 }
