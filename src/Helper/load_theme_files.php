@@ -23,8 +23,9 @@ function load_theme_files( $directory, $exclude_underscore = false ) {
 	$files = get_include_files( $directory, $exclude_underscore );
 
 	foreach ( $files['files'] as $file ) {
-		$file = str_replace( get_template_directory(), '', $file );
-		$file = str_replace( get_stylesheet_directory(), '', $file );
+		$file = realpath( $file );
+		$file = str_replace( realpath( get_template_directory() ), '', $file );
+		$file = str_replace( realpath( get_stylesheet_directory() ), '', $file );
 		$file = get_theme_file_path( $file );
 		include_once( $file );
 	}
