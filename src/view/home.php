@@ -5,10 +5,11 @@
  * @license GPL-2.0+
  */
 
-$controller = new Mimizuku_Controller();
-$controller->layout( 'wrapper' );
+use Inc2734\Mimizuku_Core\App\Controller\Controller;
+
+Controller::layout( 'wrapper' );
 if ( have_posts() ) {
-	$controller->render( 'archive', get_post_type() );
+	Controller::render( 'archive', get_post_type() );
 } else {
-	$controller->render( 'none' );
+	Controller::render( 'none' );
 }

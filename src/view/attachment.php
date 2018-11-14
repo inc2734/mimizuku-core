@@ -5,6 +5,8 @@
  * @license GPL-2.0+
  */
 
+use Inc2734\Mimizuku_Core\App\Controller\Controller;
+
 add_filter(
 	'mimizuku_layout',
 	function( $layout ) {
@@ -16,6 +18,5 @@ add_filter(
 	99999
 );
 
-$controller = new Mimizuku_Controller();
-$controller->layout( 'blank' );
-$controller->render( 'attachment' );
+Controller::layout( 'blank' );
+Controller::render( 'attachment' );

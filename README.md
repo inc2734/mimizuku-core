@@ -14,3 +14,13 @@ $ composer require inc2734/mimizuku-core
 <?php
 new \Inc2734\Mimizuku_Core\Core();
 ```
+
+### Using layout/view Controller
+```
+<?php
+// e.g. singular.php
+use Inc2734\Mimizuku_Core\App\Controller\Controller;
+
+Controller::layout( 'wrapper' );
+Controller::render( 'content', get_post_type() );
+```

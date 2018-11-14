@@ -5,19 +5,17 @@
  * @license GPL-2.0+
  */
 
-use Inc2734\WP_View_Controller\View_Controller;
+namespace Inc2734\Mimizuku_Core\App\Controller;
+
+use Inc2734\WP_View_Controller;
 
 /**
- * View controller class
- *
- * @deprecated
+ * Add filter hook to WP_View_Controller\Bootstrap
  */
-class Mimizuku_Controller extends View_Controller {
+class Controller extends WP_View_Controller\Bootstrap {
 
 	public function __construct() {
 		parent::__construct();
-
-		error_log( 'Mimizuku_Controller class is deprecated. You should use Inc2734\Mimizuku_Core\App\Controller\Controller class.' );
 
 		add_filter(
 			'inc2734_wp_view_controller_layout',

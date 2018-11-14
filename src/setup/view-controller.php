@@ -5,6 +5,10 @@
  * @license GPL-2.0+
  */
 
+use Inc2734\Mimizuku_Core\App\Controller\Controller;
+
+new Controller();
+
 /**
  * Update view controller config
  *
