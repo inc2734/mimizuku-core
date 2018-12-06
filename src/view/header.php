@@ -5,5 +5,7 @@
  * @license GPL-2.0+
  */
 
+use Inc2734\Mimizuku_Core\Helper;
+
 $header = apply_filters( 'mimizuku_header', 'header' );
-wpvc_get_header_template( $header );
+Helper\get_header_template( $header );

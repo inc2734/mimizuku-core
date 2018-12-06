@@ -19,7 +19,6 @@ class Core {
 		}
 
 		$includes = [
-			'/controller',
 			'/setup',
 		];
 		foreach ( $includes as $include ) {

@@ -4,6 +4,8 @@
  * @author inc2734
  * @license GPL-2.0+
  */
+
+use Inc2734\Mimizuku_Core\Helper;
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -12,15 +14,15 @@
 <body <?php body_class(); ?>>
 <?php do_action( 'mimizuku_prepend_body' ); ?>
 
-<?php wpvc_get_header(); ?>
+<?php Helper\get_header(); ?>
 
 <main role="main">
 	<?php $_view_controller->view(); ?>
 </main>
 
-<?php wpvc_get_sidebar(); ?>
+<?php Helper\get_sidebar(); ?>
 
-<?php wpvc_get_footer(); ?>
+<?php Helper\get_footer(); ?>
 
 <?php wp_footer(); ?>
 </body>
