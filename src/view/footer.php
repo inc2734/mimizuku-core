@@ -8,4 +8,4 @@
 use Inc2734\Mimizuku_Core\Helper;
 
 $footer = apply_filters( 'mimizuku_footer', 'footer' );
-Helper\get_footer_template( $footer );
+Helper::get_footer_template( $footer );

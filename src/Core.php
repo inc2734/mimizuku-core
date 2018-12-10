@@ -14,15 +14,11 @@ class Core {
 	public function __construct() {
 		load_textdomain( 'inc2734-mimizuku-core', __DIR__ . '/languages/' . get_locale() . '.mo' );
 
-		foreach ( glob( __DIR__ . '/Helper/*.php' ) as $file ) {
-			require_once( $file );
-		}
-
 		$includes = [
 			'/setup',
 		];
 		foreach ( $includes as $include ) {
-			Helper\include_files( __DIR__ . $include );
+			Helper::include_files( __DIR__ . $include );
 		}
 	}
 }

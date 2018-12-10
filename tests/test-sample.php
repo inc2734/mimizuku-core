@@ -14,6 +14,7 @@ class Sample_Test extends WP_UnitTestCase {
 	 * @test
 	 */
 	public function sample() {
+		new Inc2734\Mimizuku_Core\Helper();
 		new Inc2734\Mimizuku_Core\Core();
 	}
 }

@@ -9,7 +9,7 @@ namespace Inc2734\Mimizuku_Core\App\Model;
 
 use Inc2734\WP_View_Controller;
 
-class PageTemplates {
+class Page_Templates {
 	/**
 	 * Available wrapper templates
 	 *
