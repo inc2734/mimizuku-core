@@ -151,21 +151,7 @@ trait Template_Tag {
 	 * @return void
 	 */
 	public static function get_template_part( $slug, $name = null, array $vars = [] ) {
-		$args = apply_filters(
-			'mimizuku_get_template_part_args',
-			[
-				'slug' => $slug,
-				'name' => $name,
-				'vars' => $vars,
-			]
-		);
-
-		if ( false !== has_action( 'mimizuku_get_template_part_' . $args['slug'] ) ) {
-			do_action( 'mimizuku_get_template_part_' . $args['slug'], $args['name'], $args['vars'] );
-			return;
-		}
-
-		WP_View_Controller\Helper\get_template_part( $args['slug'], $args['name'], $args['vars'] );
+		WP_View_Controller\Helper\get_template_part( $slug, $name, $vars );
 	}
 
 	/**
