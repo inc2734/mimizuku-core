@@ -7,9 +7,9 @@
 
 namespace Inc2734\Mimizuku_Core;
 
-use Inc2734\Mimizuku_Core\Utility;
+use Inc2734\Mimizuku_Core\App\Contract;
 
 class Helper {
 
-	use Utility\Helper\Helper;
+	use Contract\Helper\Helper;
 }

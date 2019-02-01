@@ -5,7 +5,7 @@
  * @license GPL-2.0+
  */
 
-namespace Inc2734\Mimizuku_Core\Utility\Helper;
+namespace Inc2734\Mimizuku_Core\App\Contract\Helper;
 
 trait Assets {
 
