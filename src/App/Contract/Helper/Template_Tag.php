@@ -155,6 +155,17 @@ trait Template_Tag {
 	}
 
 	/**
+	 * Load wrapper template
+	 *
+	 * @param string $name
+	 * @param array $args
+	 * @return void
+	 */
+	public static function get_wrapper_template( $name = 'wrapper', array $args = [] ) {
+		WP_View_Controller\Helper\get_wrapper_template( $name, $args );
+	}
+
+	/**
 	 * Returns array of page templates for layout selector in customizer
 	 *
 	 * @return array
