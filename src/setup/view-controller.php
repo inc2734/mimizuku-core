@@ -22,9 +22,6 @@ add_filter(
 			'templates' => [
 				'vendor/inc2734/mimizuku-core/src/view',
 			],
-			'page-templates' => [
-				'page-templates',
-			],
 			'layout' => [
 				'templates/layout/wrapper',
 				'vendor/inc2734/mimizuku-core/src/view/templates/layout/wrapper',
