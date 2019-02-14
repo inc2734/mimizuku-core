@@ -5,7 +5,7 @@
  * @license GPL-2.0+
  */
 
-use Inc2734\Mimizuku_Core\App\Model;
+use Inc2734\Mimizuku_Core\Helper;
 
 /**
  * Additional CSS to the block editor
@@ -18,9 +18,7 @@ add_action(
 		add_action(
 			'admin_head',
 			function() {
-				$css = wp_get_custom_css();
-				$css_to_array = new Model\CSS_To_Array( $css );
-				$css = $css_to_array->get();
+				$css = Helper::get_custom_css_array();
 
 				foreach ( $css as $key => $css_block ) {
 					$selectors = $css_block->get_selectors();
@@ -35,6 +33,10 @@ add_action(
 				foreach ( $css as $key => $css_block ) {
 					$new_css .= $css_block->get_inline_css();
 				}
+
+				if ( ! $new_css ) {
+					return;
+				}
 				?>
 				<style id="wp-additional-css">
 				<?php echo strip_tags( $new_css ); // WPCS XSS ok. ?>
@@ -42,5 +44,34 @@ add_action(
 				<?php
 			}
 		);
+	}
+);
+
+/**
+ * Additional CSS to the classic editor
+ *
+ * @param string $settings
+ * @return string
+ */
+add_filter(
+	'tiny_mce_before_init',
+	function( $mce_init ) {
+		$css = Helper::get_custom_css_array();
+
+		$new_css = '';
+		foreach ( $css as $key => $css_block ) {
+			$new_css .= $css_block->get_inline_css();
+		}
+
+		if ( ! $new_css ) {
+			return $mce_init;
+		}
+
+		if ( ! isset( $mce_init['content_style'] ) ) {
+			$mce_init['content_style'] = '';
+		}
+
+		$mce_init['content_style'] .= $new_css;
+		return $mce_init;
 	}
 );
