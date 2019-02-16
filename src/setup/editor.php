@@ -71,7 +71,7 @@ add_filter(
 			$mce_init['content_style'] = '';
 		}
 
-		$mce_init['content_style'] .= $new_css;
+		$mce_init['content_style'] .= addslashes( $new_css );
 		return $mce_init;
 	}
 );
