@@ -5,7 +5,7 @@
   "require": {
     "php": ">=5.6",
     "inc2734/wp-breadcrumbs": "^1.0",
-    "inc2734/wp-oembed-blog-card": "^7.0",
+    "inc2734/wp-oembed-blog-card": "^8.0",
     "inc2734/wp-view-controller": "^7.4",
     "inc2734/wp-basis": "^5.0",
     "inc2734/wp-customizer-framework": "^5.0",
