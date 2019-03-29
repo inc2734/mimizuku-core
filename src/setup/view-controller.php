@@ -126,3 +126,20 @@ add_action(
 	},
 	9
 );
+
+/**
+ * Override inc2734_view_controller_template_part_render
+ *
+ * @param string $slug
+ * @param string $name
+ * @param array $vars
+ * @return array
+ */
+add_filter(
+	'mimizuku_template_part_render',
+	function( $html, $slug, $name, $vars ) {
+		return apply_filters( 'inc2734_view_controller_template_part_render', $html, $slug, $name, $vars );
+	},
+	9,
+	4
+);
