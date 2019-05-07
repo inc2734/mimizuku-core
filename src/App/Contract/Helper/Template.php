@@ -73,7 +73,7 @@ trait Template {
 		foreach ( $files['files'] as $file ) {
 			$file = realpath( $file );
 			$template_name = str_replace( [ trailingslashit( realpath( get_template_directory() ) ), '.php' ], '', $file );
-			\get_template_part( $template_name );
+			\Inc2734\Mimizuku_Core\Helper::get_template_part( $template_name );
 		}
 
 		foreach ( $files['directories'] as $directory ) {
