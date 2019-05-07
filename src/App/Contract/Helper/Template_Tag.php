@@ -8,7 +8,7 @@
 namespace Inc2734\Mimizuku_Core\App\Contract\Helper;
 
 use Inc2734\Mimizuku_Core\App\Model;
-use Inc2734\WP_Awesome_Widgets;
+use Inc2734\WP_Adsense;
 use Inc2734\WP_View_Controller;
 
 trait Template_Tag {
@@ -79,7 +79,7 @@ trait Template_Tag {
 	 * @return void
 	 */
 	public static function display_adsense_code( $code, $size = null ) {
-		WP_Awesome_Widgets\Helper\display_adsense_code( $code, $size );
+		WP_Adsense\Helper::the_adsense_code( $code, $size );
 	}
 
 	/**
