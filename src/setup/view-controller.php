@@ -20,6 +20,7 @@ add_filter(
 	function() {
 		return [
 			'templates' => [
+				'',
 				'vendor/inc2734/mimizuku-core/src/view',
 			],
 			'page-templates' => [
