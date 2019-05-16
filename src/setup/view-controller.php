@@ -123,6 +123,15 @@ add_action(
 		} else {
 			remove_action( 'inc2734_view_controller_get_template_part_' . $args['slug'], '__return_true' );
 		}
+
+		if ( $args['name'] ) {
+			if ( false !== has_action( 'mimizuku_get_template_part_' . $args['slug'] . '-' . $args['name'] ) ) {
+				do_action( 'mimizuku_get_template_part_' . $args['slug'] . '-' . $args['name'], $args['vars'] );
+				add_action( 'inc2734_view_controller_get_template_part_' . $args['slug'] . '-' . $args['name'], '__return_true' );
+			} else {
+				remove_action( 'inc2734_view_controller_get_template_part_' . $args['slug'] . '-' . $args['name'], '__return_true' );
+			}
+		}
 	},
 	9
 );

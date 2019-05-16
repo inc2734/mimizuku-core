@@ -89,7 +89,7 @@ trait Template_Tag {
 	 * @return void
 	 */
 	public static function get_footer_template( $name = 'footer' ) {
-		WP_View_Controller\Helper\get_footer_template( $name );
+		WP_View_Controller\Helper::get_footer_template( $name );
 	}
 
 	/**
@@ -99,7 +99,7 @@ trait Template_Tag {
 	 * @return void
 	 */
 	public static function get_footer( $name = null ) {
-		WP_View_Controller\Helper\get_footer( $name );
+		WP_View_Controller\Helper::get_footer( $name );
 	}
 
 	/**
@@ -109,7 +109,7 @@ trait Template_Tag {
 	 * @return void
 	 */
 	public static function get_header_template( $name = 'header' ) {
-		WP_View_Controller\Helper\get_header_template( $name );
+		WP_View_Controller\Helper::get_header_template( $name );
 	}
 
 	/**
@@ -119,7 +119,7 @@ trait Template_Tag {
 	 * @return void
 	 */
 	public static function get_header( $name = null ) {
-		WP_View_Controller\Helper\get_header( $name );
+		WP_View_Controller\Helper::get_header( $name );
 	}
 
 	/**
@@ -129,7 +129,7 @@ trait Template_Tag {
 	 * @return void
 	 */
 	public static function get_sidebar_template( $name = 'sidebar' ) {
-		WP_View_Controller\Helper\get_sidebar_template( $name );
+		WP_View_Controller\Helper::get_sidebar_template( $name );
 	}
 
 	/**
@@ -139,7 +139,7 @@ trait Template_Tag {
 	 * @return void
 	 */
 	public static function get_sidebar( $name = null ) {
-		WP_View_Controller\Helper\get_sidebar( $name );
+		WP_View_Controller\Helper::get_sidebar( $name );
 	}
 
 	/**
@@ -151,7 +151,7 @@ trait Template_Tag {
 	 * @return void
 	 */
 	public static function get_template_part( $slug, $name = null, array $vars = [] ) {
-		WP_View_Controller\Helper\get_template_part( $slug, $name, $vars );
+		WP_View_Controller\Helper::get_template_part( $slug, $name, $vars );
 	}
 
 	/**
@@ -162,7 +162,7 @@ trait Template_Tag {
 	 * @return void
 	 */
 	public static function get_wrapper_template( $name = 'wrapper', array $args = [] ) {
-		WP_View_Controller\Helper\get_wrapper_template( $name, $args );
+		WP_View_Controller\Helper::get_wrapper_template( $name, $args );
 	}
 
 	/**

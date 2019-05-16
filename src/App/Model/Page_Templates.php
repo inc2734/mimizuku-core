@@ -93,7 +93,7 @@ class Page_Templates {
 	protected function _get_wrapper_files() {
 		$wrapper_files = [];
 
-		foreach ( WP_View_Controller\Helper\config( 'layout' ) as $wrapper_dir ) {
+		foreach ( WP_View_Controller\Helper::config( 'layout' ) as $wrapper_dir ) {
 			foreach ( glob( get_theme_file_path( $wrapper_dir . '/*' ) ) as $wrapper_path ) {
 				$name = basename( $wrapper_path, '.php' );
 				if ( 'blank' === $name || 'blank-fluid' === $name ) {
@@ -117,7 +117,7 @@ class Page_Templates {
 	protected function _get_page_template_files() {
 		$page_template_files = [];
 
-		foreach ( WP_View_Controller\Helper\config( 'page-templates' ) as $page_template_dir ) {
+		foreach ( WP_View_Controller\Helper::config( 'page-templates' ) as $page_template_dir ) {
 			foreach ( glob( get_theme_file_path( $page_template_dir . '/*' ) ) as $page_template_path ) {
 				$name = basename( $page_template_path, '.php' );
 				if ( 'blank' === $name || 'blank-fluid' === $name ) {
