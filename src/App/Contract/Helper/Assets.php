@@ -17,9 +17,9 @@ trait Assets {
 	public static function enqueue_noto_sans_jp() {
 		wp_enqueue_style(
 			'noto-sans-jp',
-			'https://fonts.googleapis.com/css?family=Noto+Sans+JP&subset=japanese',
+			'https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap&subset=japanese',
 			[],
-			wp_get_theme()->get( 'Version' )
+			1
 		);
 	}
 
@@ -31,9 +31,9 @@ trait Assets {
 	public static function enqueue_noto_serif_jp() {
 		wp_enqueue_style(
 			'noto-serif-jp',
-			'https://fonts.googleapis.com/css?family=Noto+Serif+JP&subset=japanese',
+			'https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap&subset=japanese',
 			[],
-			wp_get_theme()->get( 'Version' )
+			1
 		);
 	}
 
