@@ -146,9 +146,9 @@ add_action(
  * @return array
  */
 add_filter(
-	'mimizuku_template_part_render',
+	'inc2734_view_controller_template_part_render',
 	function( $html, $slug, $name, $vars ) {
-		return apply_filters( 'inc2734_view_controller_template_part_render', $html, $slug, $name, $vars );
+		return apply_filters( 'mimizuku_template_part_render', $html, $slug, $name, $vars );
 	},
 	9,
 	4
