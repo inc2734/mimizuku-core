@@ -23,44 +23,56 @@ if ( function_exists( 'tests_add_filter' ) ) {
 	return;
 }
 
+
 /**
- * Output starting commen tag of the loaded template
+ * Output comment of the loaded template
  *
  * @param string $slug
  */
 add_action(
-	'inc2734_view_controller_get_template_part_pre_render',
-	function( $args ) {
-		if ( ! $args['slug'] || 0 === strpos( $args['slug'], 'app/' ) ) {
-			return;
-		}
+	'template_redirect',
+	function() {
 
-		$located = \Inc2734\WP_View_Controller\Helper::locate_template( $args['slug'] . '-' . $args['name'] . '.php', false );
-		$slug    = $args['slug'];
-		$slug   .= $args['name'] && $located ? '-' . $args['name'] : '';
+		/**
+		 * Output starting comment of the loaded template
+		 *
+		 * @param string $slug
+		 */
+		add_action(
+			'inc2734_view_controller_get_template_part_pre_render',
+			function( $args ) {
+				if ( ! $args['slug'] || 0 === strpos( $args['slug'], 'app/' ) ) {
+					return;
+				}
 
-		printf( "\n" . '<!-- Start : %1$s -->' . "\n", esc_html( $slug ) );
-	},
-	1
-);
+				$located = \Inc2734\WP_View_Controller\Helper::locate_template( $args['slug'] . '-' . $args['name'] . '.php', false );
+				$slug    = $args['slug'];
+				$slug   .= $args['name'] && $located ? '-' . $args['name'] : '';
 
-/**
- * Output closing commen tag of the loaded template
- *
- * @param string $slug
- */
-add_action(
-	'inc2734_view_controller_get_template_part_post_render',
-	function( $args ) {
-		if ( ! $args['slug'] || 0 === strpos( $args['slug'], 'app/' ) ) {
-			return;
-		}
+				printf( "\n" . '<!-- Start : %1$s -->' . "\n", esc_html( $slug ) );
+			},
+			1
+		);
 
-		$located = \Inc2734\WP_View_Controller\Helper::locate_template( $args['slug'] . '-' . $args['name'] . '.php', false );
-		$slug    = $args['slug'];
-		$slug   .= $args['name'] && $located ? '-' . $args['name'] : '';
+		/**
+		 * Output closing comment of the loaded template
+		 *
+		 * @param string $slug
+		 */
+		add_action(
+			'inc2734_view_controller_get_template_part_post_render',
+			function( $args ) {
+				if ( ! $args['slug'] || 0 === strpos( $args['slug'], 'app/' ) ) {
+					return;
+				}
 
-		printf( "\n" . '<!-- End : %1$s -->' . "\n", esc_html( $slug ) );
-	},
-	1
+				$located = \Inc2734\WP_View_Controller\Helper::locate_template( $args['slug'] . '-' . $args['name'] . '.php', false );
+				$slug    = $args['slug'];
+				$slug   .= $args['name'] && $located ? '-' . $args['name'] : '';
+
+				printf( "\n" . '<!-- End : %1$s -->' . "\n", esc_html( $slug ) );
+			},
+			1
+		);
+	}
 );
