@@ -182,4 +182,14 @@ trait Template_Tag {
 		$wrappers = $page_templates->get();
 		return $wrappers;
 	}
+
+	/**
+	 * Return true when the sidebar is registerd and active
+	 *
+	 * @param string $sidebar_id
+	 * @return boolean
+	 */
+	public static function is_active_sidebar( $sidebar_id ) {
+		return is_active_sidebar( $sidebar_id ) && is_registered_sidebar( $sidebar_id );
+	}
 }
