@@ -64,15 +64,19 @@ trait Template {
 	 * @return void
 	 */
 	public static function get_template_parts( $directory, $exclude_underscore = false ) {
+		$directory = realpath( $directory );
+
 		if ( ! is_dir( $directory ) ) {
 			return;
 		}
+
+		$template_directory = realpath( get_template_directory() );
 
 		$files = static::get_include_files( $directory, $exclude_underscore );
 
 		foreach ( $files['files'] as $file ) {
 			$file = realpath( $file );
-			$template_name = str_replace( [ trailingslashit( realpath( get_template_directory() ) ), '.php' ], '', $file );
+			$template_name = str_replace( [ $template_directory . DIRECTORY_SEPARATOR, '.php' ], '', $file );
 			\Inc2734\Mimizuku_Core\Helper::get_template_part( $template_name );
 		}
 
@@ -137,16 +141,21 @@ trait Template {
 	 * @return void
 	 */
 	public static function load_theme_files( $directory, $exclude_underscore = false ) {
+		$directory = realpath( $directory );
+
 		if ( ! is_dir( $directory ) ) {
 			return;
 		}
+
+		$template_directory   = realpath( get_template_directory() );
+		$stylesheet_directory = realpath( get_stylesheet_directory() );
 
 		$files = static::get_include_files( $directory, $exclude_underscore );
 
 		foreach ( $files['files'] as $file ) {
 			$file = realpath( $file );
-			$file = str_replace( realpath( get_template_directory() ), '', $file );
-			$file = str_replace( realpath( get_stylesheet_directory() ), '', $file );
+			$file = str_replace( $template_directory, '', $file );
+			$file = str_replace( $stylesheet_directory, '', $file );
 			$file = get_theme_file_path( $file );
 			include_once( $file );
 		}
