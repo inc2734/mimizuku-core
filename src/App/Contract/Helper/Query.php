@@ -7,6 +7,8 @@
 
 namespace Inc2734\Mimizuku_Core\App\Contract\Helper;
 
+use WP_Query;
+
 trait Query {
 
 	/**
@@ -26,7 +28,7 @@ trait Query {
 		];
 		$args = apply_filters( 'mimizuku_child_pages_args', $args );
 
-		return new \WP_Query( $args );
+		return new WP_Query( $args );
 	}
 
 	/**
@@ -78,7 +80,7 @@ trait Query {
 
 		$related_posts_args = apply_filters( 'mimizuku_related_posts_args', $related_posts_args );
 
-		return new \WP_Query(
+		return new WP_Query(
 			array_merge(
 				$related_posts_args,
 				[

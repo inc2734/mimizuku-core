@@ -7,6 +7,8 @@
 
 namespace Inc2734\Mimizuku_Core\App\Contract\Helper;
 
+use DirectoryIterator;
+
 trait Template {
 
 	/**
@@ -27,7 +29,7 @@ trait Template {
 			return $return;
 		}
 
-		$directory_iterator = new \DirectoryIterator( $directory );
+		$directory_iterator = new DirectoryIterator( $directory );
 
 		foreach ( $directory_iterator as $file ) {
 			if ( $file->isDot() ) {
