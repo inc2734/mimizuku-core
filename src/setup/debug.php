@@ -45,11 +45,15 @@ add_action(
 					return;
 				}
 
-				$located = \Inc2734\WP_View_Controller\Helper::locate_template( $args['slug'] . '-' . $args['name'] . '.php', false );
-				$slug    = $args['slug'];
-				$slug   .= $args['name'] && $located ? '-' . $args['name'] : '';
+				$completed_slug = ! $args['name'] ? $args['slug'] : $args['slug'] . '-' . $args['name'];
+				$filename       = $completed_slug . '.php';
+				$located        = \Inc2734\WP_View_Controller\Helper::locate_template( $filename, false );
 
-				printf( "\n" . '<!-- Start : %1$s -->' . "\n", esc_html( $slug ) );
+				if ( ! $located ) {
+					return;
+				}
+
+				printf( "\n" . '<!-- Start : %1$s -->' . "\n", esc_html( $completed_slug ) );
 			},
 			1
 		);
@@ -66,11 +70,15 @@ add_action(
 					return;
 				}
 
-				$located = \Inc2734\WP_View_Controller\Helper::locate_template( $args['slug'] . '-' . $args['name'] . '.php', false );
-				$slug    = $args['slug'];
-				$slug   .= $args['name'] && $located ? '-' . $args['name'] : '';
+				$completed_slug = ! $args['name'] ? $args['slug'] : $args['slug'] . '-' . $args['name'];
+				$filename       = $completed_slug . '.php';
+				$located        = \Inc2734\WP_View_Controller\Helper::locate_template( $filename, false );
 
-				printf( "\n" . '<!-- End : %1$s -->' . "\n", esc_html( $slug ) );
+				if ( ! $located ) {
+					return;
+				}
+
+				printf( "\n" . '<!-- End : %1$s -->' . "\n", esc_html( $completed_slug ) );
 			},
 			1
 		);
