@@ -166,21 +166,21 @@ trait Template_Tag {
 	}
 
 	/**
-	 * Returns array of page templates for layout selector in customizer
+	 * Returns array of layout templates
 	 *
 	 * @return array
-	 *           @var string Template slug  e.g. right-sidebar
-	 *           @var string Template name  e.g. Right Sidebar
 	 */
-	public static function get_page_templates() {
-		static $wrappers = [];
-		if ( $wrappers ) {
-			return $wrappers;
-		}
+	public static function get_wrapper_templates() {
+		return WP_View_Controller\Helper::get_wrapper_templates();
+	}
 
-		$page_templates = new Model\Page_Templates();
-		$wrappers = $page_templates->get();
-		return $wrappers;
+	/**
+	 * Returns array of header templates
+	 *
+	 * @return array
+	 */
+	public static function get_header_templates() {
+		return WP_View_Controller\Helper::get_header_templates();
 	}
 
 	/**

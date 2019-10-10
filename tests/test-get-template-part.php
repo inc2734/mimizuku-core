@@ -26,7 +26,7 @@ class Mimizuku_Core_Template_Part_Test extends WP_UnitTestCase {
 		);
 
 		add_action(
-			'inc2734_view_controller_get_template_part_pre_render',
+			'inc2734_wp_view_controller_get_template_part_pre_render',
 			function( $args ) {
 				$this->assertEquals( 'template2', $args['slug'] );
 				$this->assertEquals( 'name2', $args['name'] );
@@ -39,6 +39,7 @@ class Mimizuku_Core_Template_Part_Test extends WP_UnitTestCase {
 
 	/**
 	 * @test
+	 * @runInSeparateProcess
 	 */
 	public function template_part_root_hierarchy() {
 		$root = untrailingslashit( sys_get_temp_dir() ) . '/template-parts';
@@ -77,5 +78,51 @@ class Mimizuku_Core_Template_Part_Test extends WP_UnitTestCase {
 		ob_start();
 		Inc2734\Mimizuku_Core\Helper::get_template_part( 'template', 'name' );
 		$this->assertEquals( '', ob_get_clean() );
+	}
+
+	/**
+	 * @test
+	 * @runInSeparateProcess
+	 */
+	public function defined_html() {
+		add_action(
+			'mimizuku_get_template_part_template-name',
+			function() {
+				echo 'template-name';
+			}
+		);
+
+		add_action(
+			'mimizuku_get_template_part_template-name',
+			function() {
+				echo '2-template-name';
+			}
+		);
+
+		add_action(
+			'mimizuku_get_template_part_template',
+			function() {
+				echo 'template';
+			}
+		);
+
+		ob_start();
+		Inc2734\Mimizuku_Core\Helper::get_template_part( 'template', 'name' );
+		$this->assertEquals( 'template-name2-template-name', ob_get_clean() );
+
+		add_filter(
+			'mimizuku_template_part_render',
+			function( $html, $slug, $name ) {
+				if ( 'template' === $slug && 'name' === $name ) {
+					return '3-template-name';
+				}
+			},
+			10,
+			3
+		);
+
+		ob_start();
+		Inc2734\Mimizuku_Core\Helper::get_template_part( 'template', 'name' );
+		$this->assertEquals( '3-template-name', ob_get_clean() );
 	}
 }

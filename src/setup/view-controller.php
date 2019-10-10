@@ -16,7 +16,7 @@ new Controller();
  * @return array
  */
 add_filter(
-	'inc2734_view_controller_config',
+	'inc2734_wp_view_controller_config',
 	function() {
 		return [
 			'templates' => [
@@ -64,7 +64,7 @@ add_filter(
  * @param array $vars
  */
 add_filter(
-	'inc2734_view_controller_template_part_root',
+	'inc2734_wp_view_controller_template_part_root',
 	function( $root, $slug, $name, $vars ) {
 		return apply_filters( 'mimizuku_template_part_root', $root, $slug, $name, $vars );
 	},
@@ -82,7 +82,7 @@ add_filter(
  * @param array $vars
  */
 add_filter(
-	'inc2734_view_controller_template_part_root_hierarchy',
+	'inc2734_wp_view_controller_template_part_root_hierarchy',
 	function( $hierarchy, $slug, $name, $vars ) {
 		return apply_filters( 'mimizuku_template_part_root_hierarchy', $hierarchy, $slug, $name, $vars );
 	},
@@ -91,7 +91,7 @@ add_filter(
 );
 
 /**
- * Override inc2734_view_controller_get_template_part_args
+ * Override inc2734_wp_view_controller_get_template_part_args
  *
  * @param array $args
  *   @param string $slug
@@ -100,7 +100,7 @@ add_filter(
  * @return array
  */
 add_filter(
-	'inc2734_view_controller_get_template_part_args',
+	'inc2734_wp_view_controller_get_template_part_args',
 	function( $args ) {
 		return apply_filters( 'mimizuku_get_template_part_args', $args );
 	},
@@ -108,7 +108,7 @@ add_filter(
 );
 
 /**
- * Override inc2734_view_controller_get_template_part_{ $slug }
+ * Override inc2734_wp_view_controller_get_template_part_{ $slug }
  *
  * @param array $args
  *   @param string $slug
@@ -116,29 +116,34 @@ add_filter(
  *   @param array $vars
  */
 add_action(
-	'inc2734_view_controller_get_template_part_pre_render',
+	'inc2734_wp_view_controller_get_template_part_pre_render',
 	function( $args ) {
-		if ( false !== has_action( 'mimizuku_get_template_part_' . $args['slug'] ) ) {
-			do_action( 'mimizuku_get_template_part_' . $args['slug'], $args['name'], $args['vars'] );
-			add_action( 'inc2734_view_controller_get_template_part_' . $args['slug'], '__return_true' );
-		} else {
-			remove_action( 'inc2734_view_controller_get_template_part_' . $args['slug'], '__return_true' );
-		}
+		$slug = $args['slug'];
+		$name = $args['name'];
 
-		if ( $args['name'] ) {
-			if ( false !== has_action( 'mimizuku_get_template_part_' . $args['slug'] . '-' . $args['name'] ) ) {
-				do_action( 'mimizuku_get_template_part_' . $args['slug'] . '-' . $args['name'], $args['vars'] );
-				add_action( 'inc2734_view_controller_get_template_part_' . $args['slug'] . '-' . $args['name'], '__return_true' );
-			} else {
-				remove_action( 'inc2734_view_controller_get_template_part_' . $args['slug'] . '-' . $args['name'], '__return_true' );
-			}
+		if ( $name && has_action( 'mimizuku_get_template_part_' . $slug . '-' . $name ) ) {
+			add_action(
+				'inc2734_wp_view_controller_get_template_part_' . $slug . '-' . $name,
+				function( $vars ) use ( $slug, $name ) {
+					do_action( 'mimizuku_get_template_part_' . $slug . '-' . $name, $vars );
+				}
+			);
+		} elseif ( has_action( 'mimizuku_get_template_part_' . $slug ) ) {
+			add_action(
+				'inc2734_wp_view_controller_get_template_part_' . $slug,
+				function( $name, $vars ) use ( $slug ) {
+					do_action( 'mimizuku_get_template_part_' . $slug, $name, $vars );
+				},
+				10,
+				2
+			);
 		}
 	},
 	9
 );
 
 /**
- * Override inc2734_view_controller_template_part_render
+ * Override inc2734_wp_view_controller_template_part_render
  *
  * @param string $slug
  * @param string $name
@@ -146,7 +151,7 @@ add_action(
  * @return array
  */
 add_filter(
-	'inc2734_view_controller_template_part_render',
+	'inc2734_wp_view_controller_template_part_render',
 	function( $html, $slug, $name, $vars ) {
 		return apply_filters( 'mimizuku_template_part_render', $html, $slug, $name, $vars );
 	},

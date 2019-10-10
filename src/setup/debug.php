@@ -39,7 +39,7 @@ add_action(
 		 * @param string $slug
 		 */
 		add_action(
-			'inc2734_view_controller_get_template_part_pre_render',
+			'inc2734_wp_view_controller_get_template_part_pre_render',
 			function( $args ) {
 				if ( ! $args['slug'] || 0 === strpos( $args['slug'], 'app/' ) ) {
 					return;
@@ -64,7 +64,7 @@ add_action(
 		 * @param string $slug
 		 */
 		add_action(
-			'inc2734_view_controller_get_template_part_post_render',
+			'inc2734_wp_view_controller_get_template_part_post_render',
 			function( $args ) {
 				if ( ! $args['slug'] || 0 === strpos( $args['slug'], 'app/' ) ) {
 					return;
