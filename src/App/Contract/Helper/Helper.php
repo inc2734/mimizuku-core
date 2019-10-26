@@ -14,6 +14,5 @@ trait Helper {
 	use Query;
 	use Template_Tag;
 	use Editor;
-	use Custom_CSS;
 	use Utility;
 }

@@ -18,28 +18,17 @@ add_action(
 		add_action(
 			'admin_head',
 			function() {
-				$css = Helper::get_custom_css_array();
+				$css = wp_get_custom_css();
+				$css = str_replace( [ "\t", "\n", "\r" ], '', $css );
+				$css = preg_replace( '|\s*([\{\}])\s*|ms', '$1', $css );
+				$css = preg_replace( '/([^\{\}\(\)@]+?\{)/s', '.editor-styles-wrapper $1', $css );
 
-				foreach ( $css as $key => $css_block ) {
-					$selectors = $css_block->get_selectors();
-					foreach ( $selectors as $i => $selector ) {
-						$selectors[ $i ] = '.editor-styles-wrapper ' . $selector;
-					}
-					$css_block->set_selectors( $selectors );
-					$css[ $key ] = $css_block;
-				}
-
-				$new_css = '';
-				foreach ( $css as $key => $css_block ) {
-					$new_css .= $css_block->get_inline_css();
-				}
-
-				if ( ! $new_css ) {
+				if ( ! $css ) {
 					return;
 				}
 				?>
 				<style id="wp-additional-css">
-				<?php echo strip_tags( $new_css ); // WPCS XSS ok. ?>
+				<?php echo strip_tags( $css ); // WPCS XSS ok. ?>
 				</style>
 				<?php
 			}
@@ -56,14 +45,12 @@ add_action(
 add_filter(
 	'tiny_mce_before_init',
 	function( $mce_init ) {
-		$css = Helper::get_custom_css_array();
+		$css = wp_get_custom_css();
+		$css = str_replace( [ "\t", "\n", "\r" ], '', $css );
+		$css = preg_replace( '|\s*([\{\}])\s*|ms', '$1', $css );
+		$css = preg_replace( '/([^\{\}\(\)@]+?\{)/s', '.mce-content-body.mceContentBody $1', $css );
 
-		$new_css = '';
-		foreach ( $css as $key => $css_block ) {
-			$new_css .= $css_block->get_inline_css();
-		}
-
-		if ( ! $new_css ) {
+		if ( ! $css ) {
 			return $mce_init;
 		}
 
@@ -71,7 +58,8 @@ add_filter(
 			$mce_init['content_style'] = '';
 		}
 
-		$mce_init['content_style'] .= addslashes( $new_css );
+		$mce_init['content_style'] .= addslashes( $css );
 		return $mce_init;
-	}
+	},
+	11
 );
