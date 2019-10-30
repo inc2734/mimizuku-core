@@ -55,6 +55,19 @@ add_filter(
 );
 
 /**
+ * If return true, output template debug log
+ *
+ * @param boolean $debug
+ * @return boolean
+ */
+add_filter(
+	'inc2734_wp_view_controller_debug',
+	function( $debug ) {
+		return apply_filters( 'mimizuku_debug', $debug );
+	}
+);
+
+/**
  * Change root directory of get_template_part().
  * If return empty, root is theme directory (= default get_template_part()).
  *

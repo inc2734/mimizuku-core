@@ -34,6 +34,7 @@ class Mimizuku_Core_Template_Part_Test extends WP_UnitTestCase {
 			}
 		);
 
+		add_action( 'mimizuku_get_template_part_template2-name2', '__return_true' );
 		Inc2734\Mimizuku_Core\Helper::get_template_part( 'template', 'name', [ 'key' => 'value' ] );
 	}
 
@@ -76,6 +77,7 @@ class Mimizuku_Core_Template_Part_Test extends WP_UnitTestCase {
 
 		file_exists( $file2 ) && unlink( $file2 );
 		ob_start();
+		add_action( 'mimizuku_get_template_part_template-name', '__return_true' );
 		Inc2734\Mimizuku_Core\Helper::get_template_part( 'template', 'name' );
 		$this->assertEquals( '', ob_get_clean() );
 	}
