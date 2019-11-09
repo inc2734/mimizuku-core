@@ -19,5 +19,15 @@ class Mimizuku_Core_Helper_Test extends WP_UnitTestCase {
 		register_post_type( 'unpublic', [ 'public' => false ] );
 
 		$this->assertCount( 1, Helper::get_custom_post_types() );
+
+			unregister_post_type( 'public' );
+			unregister_post_type( 'unpublic' );
+	}
+
+	/**
+	 * @test
+	 */
+	public function no_custom_post_types() {
+		$this->assertSame( [], Helper::get_custom_post_types() );
 	}
 }

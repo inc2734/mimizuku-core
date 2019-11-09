@@ -30,6 +30,8 @@ trait Utility {
 			]
 		);
 
+		$post_types = $post_types ? $post_types : [];
+
 		wp_cache_set( 'mimizuku-custom-post-types', $post_types );
 		return $post_types;
 	}
