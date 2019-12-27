@@ -5,12 +5,6 @@
  * @license GPL-2.0+
  */
 
-add_filter(
-	'clean_url',
-	function( $url ) {
-		if ( false !== strstr( $url, 'fonts.googleapis.com' ) ) {
-			$url = str_replace( '&#038;', '&', $url );
-		}
-		return $url;
-	}
-);
+use Inc2734\WP_Google_Fonts;
+
+new WP_Google_Fonts\Bootstrap();
