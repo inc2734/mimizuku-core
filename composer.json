@@ -21,7 +21,8 @@
     "inc2734/wp-page-speed-optimization": "^2.0",
     "inc2734/wp-adsense": "^1.0",
     "inc2734/wp-custom-css-to-editor": "^0.1",
-    "inc2734/wp-google-fonts": "^0.1"
+    "inc2734/wp-google-fonts": "^0.1",
+    "inc2734/wp-helper": "^0.1"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "*",
